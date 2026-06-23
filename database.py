@@ -45,3 +45,43 @@ def load_clean(path: str) -> pd.DataFrame:
  
     return df    
 
+
+def build(df: pd.DataFrame) -> None:
+    df.to_csv(CLEAN_CSV_PATH, index=False)
+    conn = sqlite3.connect(DB_PATH)
+    df.to_sql("customers", conn, if_exists="replace", index=False)
+    conn.commit()
+    conn.close()
+    print(f"Wrote {len(df):,} rows to {DB_PATH} (table: customers) and {CLEAN_CSV_PATH}")
+
+DEMO_QUERIES = {
+    "Overall churn rate": """
+        SELECT ROUND(100.0 * AVG(churn), 1) AS churn_rate_pct,
+               COUNT(*) AS customers
+        FROM customers;
+    """,
+    "Churn rate by income band": """
+        SELECT Income_Category,
+               COUNT(*) AS customers,
+               ROUND(100.0 * AVG(churn), 1) AS churn_rate_pct
+        FROM customers
+        GROUP BY Income_Category
+        ORDER BY churn_rate_pct DESC;
+    """,
+    "Churn rate by number of products held": """
+        SELECT Total_Relationship_Count AS products_held,
+               COUNT(*) AS customers,
+               ROUND(100.0 * AVG(churn), 1) AS churn_rate_pct
+        FROM customers
+        GROUP BY Total_Relationship_Count
+        ORDER BY products_held;
+    """,
+    "Spend & activity: churned vs retained": """
+        SELECT CASE churn WHEN 1 THEN 'Churned' ELSE 'Retained' END AS segment,
+               ROUND(AVG(Total_Trans_Ct), 1)  AS avg_transactions,
+               ROUND(AVG(Total_Trans_Amt), 0) AS avg_spend,
+               ROUND(AVG(Avg_Utilization_Ratio), 3) AS avg_utilization
+        FROM customers
+        GROUP BY churn;
+    """,
+}    
