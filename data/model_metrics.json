@@ -1,0 +1,49 @@
+{
+  "logistic": {
+    "model": "Logistic Regression",
+    "precision": 0.531,
+    "recall": 0.818,
+    "f1": 0.644,
+    "roc_auc": 0.921,
+    "confusion_matrix": [
+      [
+        1466,
+        235
+      ],
+      [
+        59,
+        266
+      ]
+    ]
+  },
+  "xgboost": {
+    "model": "XGBoost",
+    "precision": 0.872,
+    "recall": 0.92,
+    "f1": 0.895,
+    "roc_auc": 0.993,
+    "confusion_matrix": [
+      [
+        1657,
+        44
+      ],
+      [
+        26,
+        299
+      ]
+    ]
+  },
+  "best": "XGBoost",
+  "top_features": {
+    "Total_Trans_Ct": 0.2273000031709671,
+    "Total_Revolving_Bal": 0.13169999420642853,
+    "Total_Relationship_Count": 0.08250000327825546,
+    "Gender_M": 0.0697999969124794,
+    "Total_Trans_Amt": 0.06679999828338623,
+    "Total_Ct_Chng_Q4_Q1": 0.04989999905228615,
+    "Months_Inactive_12_mon": 0.03999999910593033,
+    "Total_Amt_Chng_Q4_Q1": 0.032099999487400055,
+    "Gender_F": 0.028999999165534973,
+    "Contacts_Count_12_mon": 0.023399999365210533
+  }
+}
