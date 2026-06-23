@@ -1,7 +1,7 @@
 import sqlite3
 import pandas as pd
 
-RAW_DATA_PATH = "data/BankChurn.csv"
+RAW_DATA_PATH = "data/BankChurners.csv"
 CLEAN_CSV_PATH = "data/customers_clean.csv"
 DB_PATH = "data/credit_card.db"
 
@@ -85,3 +85,15 @@ DEMO_QUERIES = {
         GROUP BY churn;
     """,
 }    
+
+def run_demos() -> None:
+    conn = sqlite3.connect(DB_PATH)
+    for title, query in DEMO_QUERIES.items():
+        print(f"\n{title}\n{'-' * len(title)}")
+        print(pd.read_sql_query(query, conn).to_string(index=False))
+    conn.close()
+
+if __name__ == "__main__":
+    frame = load_clean(RAW_DATA_PATH)
+    build(frame)
+    run_demos()
