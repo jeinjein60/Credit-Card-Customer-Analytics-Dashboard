@@ -19,8 +19,8 @@
   "xgboost": {
     "model": "XGBoost",
     "precision": 0.872,
-    "recall": 0.92,
-    "f1": 0.895,
+    "recall": 0.926,
+    "f1": 0.899,
     "roc_auc": 0.993,
     "confusion_matrix": [
       [
@@ -28,22 +28,22 @@
         44
       ],
       [
-        26,
-        299
+        24,
+        301
       ]
     ]
   },
   "best": "XGBoost",
   "top_features": {
-    "Total_Trans_Ct": 0.2273000031709671,
-    "Total_Revolving_Bal": 0.13169999420642853,
-    "Total_Relationship_Count": 0.08250000327825546,
-    "Gender_M": 0.0697999969124794,
-    "Total_Trans_Amt": 0.06679999828338623,
-    "Total_Ct_Chng_Q4_Q1": 0.04989999905228615,
-    "Months_Inactive_12_mon": 0.03999999910593033,
-    "Total_Amt_Chng_Q4_Q1": 0.032099999487400055,
-    "Gender_F": 0.028999999165534973,
-    "Contacts_Count_12_mon": 0.023399999365210533
+    "Total_Trans_Ct": 0.22849999368190765,
+    "Total_Revolving_Bal": 0.12690000236034393,
+    "Total_Relationship_Count": 0.08569999784231186,
+    "Total_Trans_Amt": 0.07249999791383743,
+    "Total_Ct_Chng_Q4_Q1": 0.05050000175833702,
+    "Months_Inactive_12_mon": 0.043699998408555984,
+    "Gender_F": 0.034299999475479126,
+    "Total_Amt_Chng_Q4_Q1": 0.03269999846816063,
+    "Avg_Utilization_Ratio": 0.02969999983906746,
+    "Avg_Open_To_Buy": 0.026900000870227814
   }
 }
